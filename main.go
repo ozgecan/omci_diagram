@@ -1,14 +1,44 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"github.com/CrowdSurge/banner"
+	"os"
+	"strings"
 )
 
 func main() {
 	fmt.Print("OMCI Diagram")
 	createBanner()
-	scanFile("/home/ozgecan/CHT/1/omci.log")
+	path := scanConsole()
+	scanFile(path)
+
+}
+func scanConsole() string {
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Println("----------Please Give Capture Path--------")
+
+	for {
+		fmt.Print("-> ")
+		text, _ := reader.ReadString('\n')
+		// convert CRLF to LF
+		text = strings.Replace(text, "\n", "", -1)
+
+		if isValid(text) {
+			fmt.Println("Your file path:", text)
+			return text
+		}
+	}
+}
+
+func isValid(fp string) bool {
+	if _, err := os.Stat(fp); err == nil {
+		return true
+	}else{
+		return false
+	}
+
 }
 func createBanner(){
 	banner.Print("omci diagram")
