@@ -14,7 +14,8 @@ func main() {
 	createBanner()
 	//path := scanConsole()
 	//scanFile(path)
-	example.CreateDiagram()
+	example.CreateDiagramtoPPTP()
+	example.CreateDiagramtoVEIP()
 }
 func scanConsole() string {
 	reader := bufio.NewReader(os.Stdin)
