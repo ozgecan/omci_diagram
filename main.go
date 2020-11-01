@@ -6,14 +6,15 @@ import (
 	"github.com/CrowdSurge/banner"
 	"os"
 	"strings"
+	example "github/omci_diagram/example"
 )
 
 func main() {
 	fmt.Print("OMCI Diagram")
 	createBanner()
-	path := scanConsole()
-	scanFile(path)
-
+	//path := scanConsole()
+	//scanFile(path)
+	example.CreateDiagram()
 }
 func scanConsole() string {
 	reader := bufio.NewReader(os.Stdin)
